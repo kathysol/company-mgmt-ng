@@ -17,6 +17,10 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {PanelModule} from 'primeng/panel';
+import {TableModule} from 'primeng/table';
+import { DividerModule } from "primeng/divider";
+import {FormsModule} from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,11 @@ import {PanelModule} from 'primeng/panel';
     MenubarModule,
     InputTextModule,
     ButtonModule,
-    PanelModule
+    PanelModule,
+    TableModule,
+    DividerModule,
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

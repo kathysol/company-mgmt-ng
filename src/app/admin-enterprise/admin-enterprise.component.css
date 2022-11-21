@@ -1,0 +1,19 @@
+.button-success{
+color: #ffffff;
+background: #2dc01ad9;
+border: 1px solid  #1cae09;
+height: 35px;
+}
+
+.button-cancel{
+  color: #ffffff;
+  background: #EF4444;
+  border: 1px solid  #EF4444;
+  height: 35px;
+  }
+
+.div-button{
+  text-align: end;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

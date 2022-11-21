@@ -11,5 +11,9 @@ export default class EnterpriseVO {
       public createdDate?: string,
       public modifiedBy?: string,
       public modifiedDate?: string,
-      public departments?: DepartmentVO[]) { }
+      public departments?: DepartmentVO[],
+
+      public nameValid?: boolean,
+      public addressValid?: boolean,
+      public phoneValid?: boolean,) { }
 }
