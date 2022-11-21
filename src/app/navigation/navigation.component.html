@@ -1,1 +1,12 @@
-<p>navigation works!</p>
+<p-menubar [model]="menuList">
+  <ng-template pTemplate="start">
+      <img src="assets/showcase/images/primeng.svg" height="40" class="mr-2">
+  </ng-template>
+  <ng-template pTemplate="end">
+      <input type="text" pInputText placeholder="Search">
+  </ng-template>
+</p-menubar>
+<app-dashboard *ngIf="nav==0"></app-dashboard>
+<app-admin-enterprise *ngIf="nav==1"></app-admin-enterprise>
+<app-admin-department *ngIf="nav==2"></app-admin-department>
+<app-admin-employee  *ngIf="nav==3"></app-admin-employee>
