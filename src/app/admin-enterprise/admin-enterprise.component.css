@@ -1,7 +1,7 @@
 .button-success{
 color: #ffffff;
-background: #2dc01ad9;
-border: 1px solid  #1cae09;
+background: #22C55E;
+border: 1px solid  #22C55E;
 height: 35px;
 }
 
@@ -16,4 +16,12 @@ height: 35px;
   text-align: end;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.p-selectbutton {
+  width: 10px;
+}
+
+button{
+  margin-right: 3px;
 }

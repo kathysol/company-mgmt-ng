@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import EnterpriseVO from '../model/EnterpriseVO';
 import { AppMgmtService } from '../service/app-mgmt.service';
 import { constants } from '../constants/constants';
+import AppMgmtModel from '../model/AppMgmtModel';
 
 @Component({
   selector: 'app-admin-enterprise',
@@ -16,7 +17,11 @@ export class AdminEnterpriseComponent implements OnInit {
   value2: string='';
   newEnterprise:EnterpriseVO= new EnterpriseVO;
   menssageValidation: string='';
-  constructor(private appMgmtService:AppMgmtService) { }
+  model:AppMgmtModel= new AppMgmtModel;
+
+  constructor(private appMgmtService:AppMgmtService,private modelr:AppMgmtModel) {
+    this.model=modelr;
+   }
 
 
   ngOnInit(): void {
@@ -39,6 +44,7 @@ clearNew(){
   this.newEnterprise.nameValid=true;
   this.newEnterprise.phoneValid=true;
   this.newEnterprise.addressValid=true;
+  this.newEnterprise.status=true;
   this.menssageValidation='';
 }
 }

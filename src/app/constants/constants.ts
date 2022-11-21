@@ -16,6 +16,7 @@ export const constants = {
   SERVICES: {
     USER:'admin',
     PASSWORD:'admin'
-  }
-
+  },
+  ACTIVE_STATE:'Active',
+  INACTIVE_STATE:'Inactive',
 }
