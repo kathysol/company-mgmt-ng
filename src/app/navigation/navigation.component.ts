@@ -20,14 +20,14 @@ export class NavigationComponent implements OnInit {
     this.menuList = [
       {
           label:constants.VIEWS.HOME,
-          icon:'pi pi-fw pi-file',
+          icon:'pi pi-fw pi-home',
           command: () => {
             this.goDashboard();
         }
       },
       {
           label:constants.VIEWS.ENTERPRISES,
-          icon:'pi pi-fw pi-pencil',
+          icon:'pi pi-fw pi-building',
           command: () => {
             this.goEnterprises();
         }
@@ -35,14 +35,14 @@ export class NavigationComponent implements OnInit {
       },
       {
           label:constants.VIEWS.DEPARTMENTS,
-          icon:'pi pi-fw pi-user',
+          icon:'pi pi-fw pi-globe',
           command: () => {
             this.goDepartments();
         }
       },
       {
           label:constants.VIEWS.EMPLOYEES,
-          icon:'pi pi-fw pi-power-off',
+          icon:'pi pi-fw pi-user',
           command: () => {
             this.goEmployees();
         }
