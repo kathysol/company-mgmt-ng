@@ -21,6 +21,9 @@ import {TableModule} from 'primeng/table';
 import { DividerModule } from "primeng/divider";
 import {FormsModule} from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {SelectButtonModule} from 'primeng/selectbutton';
+import AppMgmtModel from './model/AppMgmtModel';
+import { TagModule } from "primeng/tag";
 
 @NgModule({
   declarations: [
@@ -43,9 +46,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     TableModule,
     DividerModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    SelectButtonModule,
+    TagModule
   ],
-  providers: [],
+  providers: [AppMgmtModel],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
