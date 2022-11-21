@@ -100,8 +100,8 @@
       </td>
       <td>
         <button pButton pRipple (click)="goToEdit(enterprise)" type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning p-button-sm"></button>
-        <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-success p-button-sm"></button>
-        <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-secondary p-button-sm"></button>
+        <button *ngIf="!enterprise.status" pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-success p-button-sm"></button>
+        <button *ngIf="enterprise.status"pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-secondary p-button-sm"></button>
         <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger" p-button-sm></button>
       </td>
     </tr>

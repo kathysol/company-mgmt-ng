@@ -60,11 +60,24 @@ saveEnterprise(){
   let createdEnterprise= new EnterpriseVO;
   this.appMgmtService.saveEnterprise(this.newEnterprise).subscribe(resp =>{
     createdEnterprise=resp;
-    this.messageService.add({severity:'success', summary:messages.THE_COMPANY, detail:messages.SUCCESS.ENTERPRISE_CREATED});
-    this.clearNew();
+    if (this.isEdition) {
+      this.messageService.add({severity:'success', summary:messages.THE_COMPANY, detail:messages.SUCCESS.ENTERPRISE_MODIFIED});
+
+    }else{
+      this.messageService.add({severity:'success', summary:messages.THE_COMPANY, detail:messages.SUCCESS.ENTERPRISE_CREATED});
+
+    }
+   this.clearNew();
     this.getAllEnterprises();
   }, err => {
-    this.messageService.add({severity:'error', summary:messages.ERROR_NAME, detail:messages.ERROR.ENTERPRISE_NO_CREATED});
+    if (this.isEdition) {
+      this.messageService.add({severity:'error', summary:messages.ERROR_NAME, detail:messages.ERROR.ENTERPRISE_NO_CREATED});
+
+    }else{
+      this.messageService.add({severity:'error', summary:messages.ERROR_NAME, detail:messages.ERROR.ENTERPRISE_NO_MODIFIED});
+
+    }
+
 })
 
 
@@ -85,7 +98,10 @@ cancelEnterprise(){
 });
 }
 
-editEnterprise(){}
+editEnterprise(){
+  this.newEnterprise.modifiedBy='Jhon';
+  this.saveEnterprise();
+}
 
 goToEdit(enterprise: EnterpriseVO){
   this.isEdition=true;
