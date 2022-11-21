@@ -7,6 +7,10 @@ export const constants = {
     ENTERPRISES:'Companies',
     DEPARTMENTS:'Departments',
     EMPLOYEES:'Employees',
+    TITTLE_HOME:'Home',
+    TITTLE_ENTERPRISES:'Company Management',
+    TITTLE_DEPARTMENTS:'Department Management',
+    TITTLE_EMPLOYEES:'Employee Management',
   },
   SERVICES: {
     USER:'admin',

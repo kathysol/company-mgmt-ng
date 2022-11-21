@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -15,6 +16,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {PanelModule} from 'primeng/panel';
 
 @NgModule({
   declarations: [
@@ -27,11 +29,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     MenubarModule,
     InputTextModule,
-    ButtonModule
+    ButtonModule,
+    PanelModule
   ],
   providers: [],
   bootstrap: [AppComponent]
