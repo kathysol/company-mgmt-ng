@@ -1,6 +1,7 @@
 import DepartmentEmployeeVO from "./DepartmentEmployeeVO";
+import EnterpriseVO from "./EnterpriseVO";
 
-export default class EnterpriseVO {
+export default class DepartmentVO {
   constructor(
       public id?: number,
       public name?: string,
