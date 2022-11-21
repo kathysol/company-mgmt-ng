@@ -28,6 +28,8 @@ import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {RippleModule} from 'primeng/ripple';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import {TooltipModule} from 'primeng/tooltip';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     MessagesModule,
     MessageModule,
     RippleModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    TooltipModule,
+    DialogModule
   ],
   providers: [AppMgmtModel],
   bootstrap: [AppComponent]

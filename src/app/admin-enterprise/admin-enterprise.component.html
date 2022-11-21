@@ -99,11 +99,49 @@
         <button  *ngIf="!enterprise.status" disabled="true" pButton pRipple type="button" label="{{constants.INACTIVE_STATE}}" class="p-button-text p-button-secondary p-button-sm" icon="pi pi-times"></button>
       </td>
       <td>
-        <button pButton pRipple (click)="goToEdit(enterprise)" type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning p-button-sm"></button>
-        <button *ngIf="!enterprise.status" pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-success p-button-sm"></button>
-        <button *ngIf="enterprise.status"pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-secondary p-button-sm"></button>
-        <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger" p-button-sm></button>
+        <button pButton pRipple (click)="goToEdit(enterprise)" type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning p-button-sm" pTooltip="Edit company "></button>
+        <button *ngIf="!enterprise.status"  (click)="changeStatusEnterprise(true,enterprise)" pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-success p-button-sm" pTooltip="Activate company "></button>
+        <button *ngIf="enterprise.status" (click)="changeStatusEnterprise(false,enterprise)" pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-secondary p-button-sm" pTooltip="Inactivate company "></button>
+        <!-- <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger" p-button-sm></button> -->
+        <button  (click)="showModalAudit(enterprise)" pButton pRipple type="button" icon="pi pi-comments" class="p-button-rounded p-button-info" p-button-sm pTooltip="View audit fields "></button>
       </td>
     </tr>
   </ng-template>
 </p-table>
+
+<p-dialog header="Audit Fields" [(visible)]="displayModalAudit" [style]="{width: '50vw'}" [baseZIndex]="10000">
+  <div class="row">
+    <div class="col-2">
+      <p bold >Created by: </p>
+    </div>
+    <div class="col-10">
+      {{auditEnterprise.createdBy}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <p bold >Created date: </p>
+    </div>
+    <div class="col-10">
+      {{auditEnterprise.createdDate}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <p bold >Modified by: </p>
+    </div>
+    <div class="col-10">
+      {{auditEnterprise.modifiedBy}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <p bold >Modified date: </p>
+    </div>
+    <div class="col-10">
+      {{auditEnterprise.modifiedDate}}
+    </div>
+  </div>
+
+ </p-dialog>

@@ -21,6 +21,8 @@ export class AdminEnterpriseComponent implements OnInit {
   newEnterprise:EnterpriseVO= new EnterpriseVO;
   model:AppMgmtModel= new AppMgmtModel;
   isEdition:boolean=false;
+  displayModalAudit:boolean=false;
+  auditEnterprise:EnterpriseVO= new EnterpriseVO;
 
   constructor(private appMgmtService:AppMgmtService,
     private modelr:AppMgmtModel,
@@ -34,6 +36,7 @@ export class AdminEnterpriseComponent implements OnInit {
   ngOnInit(): void {
     this.constants=constants;
     this.newEnterprise= new EnterpriseVO;
+    this.displayModalAudit=false;
     this.clearNew();
     this.getAllEnterprises();
     this.primengConfig.ripple = true;
@@ -111,6 +114,26 @@ goToEdit(enterprise: EnterpriseVO){
 validateEnterprise(){
   this.newEnterprise.createdBy='Jhon';
   this.saveEnterprise();
+}
+
+changeStatusEnterprise(newStatus:boolean,enterprise: EnterpriseVO){
+  enterprise.status=newStatus;
+  enterprise.modifiedBy='UsuMod';
+  let createdEnterprise= new EnterpriseVO;
+  this.appMgmtService.saveEnterprise(enterprise).subscribe(resp =>{
+    createdEnterprise=resp;
+   this.messageService.add({severity:'success', summary:messages.THE_COMPANY, detail:messages.SUCCESS.ENTERPRISE_MODIFIED});
+   this.clearNew();
+  this.getAllEnterprises();
+  }, err => {
+      this.messageService.add({severity:'error', summary:messages.ERROR_NAME, detail:messages.ERROR.ENTERPRISE_NO_MODIFIED});
+})
+
+}
+
+showModalAudit(enterprise: EnterpriseVO){
+  this.displayModalAudit=true;
+  this.auditEnterprise=enterprise;
 }
 
 }
