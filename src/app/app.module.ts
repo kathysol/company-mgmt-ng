@@ -24,6 +24,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import AppMgmtModel from './model/AppMgmtModel';
 import { TagModule } from "primeng/tag";
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {RippleModule} from 'primeng/ripple';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [
@@ -48,7 +52,11 @@ import { TagModule } from "primeng/tag";
     FormsModule,
     NgbModule,
     SelectButtonModule,
-    TagModule
+    TagModule,
+    MessagesModule,
+    MessageModule,
+    RippleModule,
+    ConfirmDialogModule
   ],
   providers: [AppMgmtModel],
   bootstrap: [AppComponent]

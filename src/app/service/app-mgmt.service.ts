@@ -19,4 +19,9 @@ export class AppMgmtService {
     const headers = new HttpHeaders({ Authorization: this.autenticationService });
     return this.http.get<EnterpriseVO[]>('/api/enterprise/',{headers});
   }
+
+  public saveEnterprise(enterpriseVO:EnterpriseVO): Observable<EnterpriseVO>{
+    const headers = new HttpHeaders({ Authorization: this.autenticationService });
+    return this.http.post<EnterpriseVO>('/api/enterprise/',enterpriseVO,{headers});
+  }
 }

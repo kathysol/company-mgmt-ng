@@ -12,6 +12,7 @@ export const constants = {
     TITTLE_DEPARTMENTS:'Department Management',
     TITTLE_EMPLOYEES:'Employee Management',
     ENTERPRISE:'Company',
+    CONFIRMATION:'Confirmation',
   },
   SERVICES: {
     USER:'admin',
