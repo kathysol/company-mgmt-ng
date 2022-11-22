@@ -6,4 +6,8 @@ export default class AppMgmtModel {
     { label: constants.ACTIVE_STATE, value: true },
     { label: constants.INACTIVE_STATE, value: false },
   ];
+
+  showShortState(state:boolean){
+    return state==true?'ACT':'INA';
+  }
 }

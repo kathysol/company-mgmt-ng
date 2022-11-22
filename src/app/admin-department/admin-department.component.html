@@ -1,33 +1,19 @@
+
+<p-messages></p-messages>
+<p-confirmDialog [style]="{ width: '50vw' }" [baseZIndex]="10000"></p-confirmDialog>
 <div class="row">
   <div class="col-11"></div>
   <div class="col-1" style="margin-bottom: 10px">
-    <button
-      (click)="showModalNew()"
-      pButton
-      pRipple
-      type="button"
-      icon="pi pi-plus"
-      class="p-button-rounded p-button-success"
-      pTooltip="New department"
-    ></button>
+    <button (click)="showModalNew()" pButton pRipple type="button" icon="pi pi-plus"
+      class="p-button-rounded p-button-success" pTooltip="New department"></button>
   </div>
 </div>
 
-<p-messages></p-messages>
-<p-confirmDialog
-  [style]="{ width: '50vw' }"
-  [baseZIndex]="10000"
-></p-confirmDialog>
 
-<p-table
-  [value]="departmentAll"
-  [paginator]="true"
-  [rows]="5"
-  [showCurrentPageReport]="true"
+<p-table [value]="departmentAll" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
   [tableStyle]="{ 'min-width': '50rem' }"
   currentPageReportTemplate="Showing {first} to {last} of {totalRecords} departments"
-  [rowsPerPageOptions]="[5, 10, 50]"
->
+  [rowsPerPageOptions]="[5, 10, 50]">
   <ng-template pTemplate="caption">
     <div class="table-header">List of {{ constants.VIEWS.DEPARTMENTS }}</div>
   </ng-template>
@@ -62,72 +48,38 @@
       <td>{{ department.description }}</td>
       <td>{{ department.phone }}</td>
       <td>
-        <button
-          pButton
-          pRipple
-          type="button"
-          label="Fallabela"
-          class="p-button-rounded p-button-help p-button-sm"
-          icon="pi pi-building"
-        ></button>
+        <button pButton pRipple type="button" label="Fallabela" class="p-button-rounded p-button-help p-button-sm"
+          icon="pi pi-building"></button>
       </td>
       <td>
-        <button *ngIf="department.status" disabled="true" pButton pRipple type="button" label="{{constants.ACTIVE_STATE}}" class="p-button-text p-button-success p-button-sm" icon="pi pi-check"></button>
-        <button  *ngIf="!department.status" disabled="true" pButton pRipple type="button" label="{{constants.INACTIVE_STATE}}" class="p-button-text p-button-secondary p-button-sm" icon="pi pi-times"></button>
+        <button *ngIf="department.status" disabled="true" pButton pRipple type="button"
+          label="{{constants.ACTIVE_STATE}}" class="p-button-text p-button-success p-button-sm"
+          icon="pi pi-check"></button>
+        <button *ngIf="!department.status" disabled="true" pButton pRipple type="button"
+          label="{{constants.INACTIVE_STATE}}" class="p-button-text p-button-secondary p-button-sm"
+          icon="pi pi-times"></button>
 
       </td>
       <td>
-        <button
-          pButton
-          pRipple
-          (click)="showModalEdit(department)"
-          type="button"
-          icon="pi pi-pencil"
-          class="p-button-rounded p-button-warning p-button-sm"
-          pTooltip="Edit department"
-        ></button>
-        <button
-          *ngIf="!department.status"
-          (click)="changeStatusDepartment(true, department)"
-          pButton
-          pRipple
-          type="button"
-          icon="pi pi-check"
-          class="p-button-rounded p-button-success p-button-sm"
-          pTooltip="Activate company "
-        ></button>
-        <button
-          *ngIf="department.status"
-          (click)="changeStatusDepartment(false, department)"
-          pButton
-          pRipple
-          type="button"
-          icon="pi pi-times"
-          class="p-button-rounded p-button-secondary p-button-sm"
-          pTooltip="Inactivate company "
-        ></button>
+        <button pButton pRipple (click)="showModalEdit(department)" type="button" icon="pi pi-pencil"
+          class="p-button-rounded p-button-warning p-button-sm" pTooltip="Edit department"></button>
+        <button *ngIf="!department.status" (click)="changeStatusDepartment(true, department)" pButton pRipple
+          type="button" icon="pi pi-check" class="p-button-rounded p-button-success p-button-sm"
+          pTooltip="Activate company "></button>
+        <button *ngIf="department.status" (click)="changeStatusDepartment(false, department)" pButton pRipple
+          type="button" icon="pi pi-times" class="p-button-rounded p-button-secondary p-button-sm"
+          pTooltip="Inactivate company "></button>
         <!-- <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger" p-button-sm></button> -->
-        <button
-          (click)="showModalAudit(department)"
-          pButton
-          pRipple
-          type="button"
-          icon="pi pi-comments"
-          class="p-button-rounded p-button-info"
-          p-button-sm
-          pTooltip="View audit fields "
-        ></button>
+        <button (click)="showModalAudit(department)" pButton pRipple type="button" icon="pi pi-comments"
+          class="p-button-rounded p-button-info" p-button-sm pTooltip="View audit fields "></button>
+        <button (click)="showModalManageEmployees(department)" pButton pRipple type="button" icon="pi pi-users"
+          class="p-button-rounded p-button-danger" p-button-sm pTooltip="Mange employees "></button>
       </td>
     </tr>
   </ng-template>
 </p-table>
 
-<p-dialog
-  header="Audit Fields"
-  [(visible)]="displayModalAudit"
-  [style]="{ width: '50vw' }"
-  [baseZIndex]="10000"
->
+<p-dialog header="Audit Fields" [(visible)]="displayModalAudit" [style]="{ width: '50vw' }" [baseZIndex]="10000">
   <div class="row">
     <div class="col-2">
       <p bold>Created by:</p>
@@ -162,6 +114,7 @@
     </div>
   </div>
 </p-dialog>
+
 <p-dialog header="{{ titleNewModal }}" [(visible)]="displayModalNewDepartment" [style]="{ width: '50vw' }"
   [baseZIndex]="10000">
   <!-- <div class="row">
@@ -188,8 +141,8 @@
       </div>
 
       <div class="row">
-        <div class="col-8" >
-          <div class="p-field" >
+        <div class="col-8">
+          <div class="p-field">
             <span class="p-float-label">
               <textarea class="container" id="float-input" rows="5" cols="30" pInputTextarea
                 [(ngModel)]="newDepartment.description" formControlName="description"></textarea>
@@ -204,7 +157,8 @@
         <div class="col-8">
           <div class="p-field">
             <span class="p-float-label">
-              <input class="container" id="float-input" type="text" pInputText [(ngModel)]="newDepartment.phone" formControlName="phone" />
+              <input class="container" id="float-input" type="text" pInputText [(ngModel)]="newDepartment.phone"
+                formControlName="phone" />
               <label for="float-input">Phone</label>
             </span>
 
@@ -235,7 +189,7 @@
         </div>
         <div class="col-4">
           <p-message style="margin:  4px;" *ngIf="departmentGroupForm.controls['enterprise'].invalid" severity="error"
-          text="{{getErrorMessage('enterprise')}}"></p-message>
+            text="{{getErrorMessage('enterprise')}}"></p-message>
 
         </div>
 
@@ -252,4 +206,30 @@
     </p-button>
     <p-button icon="pi pi-times" (click)="displayModalNewDepartment = false" label="Cancel"></p-button>
   </ng-template>
+</p-dialog>
+
+<p-dialog header="Manage employees" [(visible)]="displayModalManageEmployees" [style]="{ width: '50vw' }" [baseZIndex]="10000">
+
+  <p-pickList [source]="allEmployees" [target]="addEmployees" sourceHeader="Available" targetHeader="Selected" [dragdrop]="true"
+  [responsive]="true" [sourceStyle]="{'height':'300px'}" [targetStyle]="{'height':'300px'}" filterBy="name"
+  sourceFilterPlaceholder="Search by name" targetFilterPlaceholder="Search by name">
+  <ng-template let-employee pTemplate="item">
+      <div class="product-item">
+          <div class="product-list-detail">
+              <h5 class="mb-2">{{employee.name}}</h5>
+              <i class="pi pi-sitemap product-category-icon"></i>
+              <span class="product-category">{{employee.position}}</span>
+          </div>
+          <div class="product-list-action">
+              <h6 class="mb-2">{{employee.age}}</h6>
+              <span [class]="'product-badge-' + employee.status">{{model.showShortState(employee.status)}}</span>
+          </div>
+      </div>
+  </ng-template>
+</p-pickList>
+<ng-template pTemplate="footer">
+  <p-button  icon="pi pi-save" (click)="manageEmployee()" label="Save" styleClass="p-button-text">
+  </p-button>
+   <p-button icon="pi pi-times" (click)="displayModalManageEmployees = false" label="Cancel"></p-button>
+</ng-template>
 </p-dialog>

@@ -7,6 +7,7 @@ import { messages } from '../constants/messages';
 import DepartmentVO from '../model/DepartmentVO';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import EnterpriseVO from '../model/EnterpriseVO';
+import EmployeeVO from '../model/EmployeeVO';
 
 @Component({
   selector: 'app-admin-department',
@@ -34,7 +35,10 @@ export class AdminDepartmentComponent implements OnInit {
   });
   enterpriseAll: EnterpriseVO[]= [];
   selectedCountry:EnterpriseVO = new EnterpriseVO;
+  displayModalManageEmployees:boolean=false;
 
+  allEmployees: EmployeeVO[]= [];
+  addEmployees: EmployeeVO[]= [];
 
   constructor(private appMgmtService:AppMgmtService,
     private modelr:AppMgmtModel,
@@ -166,4 +170,18 @@ getAllEnterprises(){
   })
 }
 
+showModalManageEmployees(departmentVO: DepartmentVO){
+  this.displayModalManageEmployees=true;
+  this.getAllEmployees();
+}
+
+getAllEmployees(){
+  this.appMgmtService.getAllEmployees().subscribe(resp =>{
+    this.allEmployees=resp;
+  })
+}
+
+manageEmployee(){
+
+}
 }

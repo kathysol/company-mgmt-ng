@@ -39,7 +39,7 @@ export class AppMgmtService {
     return this.http.post<DepartmentVO>('/api/department/',departmentVO,{headers});
   }
 
-  public getEmployee(): Observable<EmployeeVO[]>{
+  public getAllEmployees(): Observable<EmployeeVO[]>{
     const headers = new HttpHeaders({ Authorization: this.autenticationService });
     return this.http.get<EmployeeVO[]>('/api/employee/',{headers});
   }
@@ -49,7 +49,7 @@ export class AppMgmtService {
     return this.http.post<EmployeeVO>('/api/employee/',employeeVO,{headers});
   }
 
-  public getDepartmentEmployee(): Observable<DepartmentEmployeeVO[]>{
+  public getAllDepartmentEmployees(): Observable<DepartmentEmployeeVO[]>{
     const headers = new HttpHeaders({ Authorization: this.autenticationService });
     return this.http.get<DepartmentEmployeeVO[]>('/api/departmentEmployee/',{headers});
   }

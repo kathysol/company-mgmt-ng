@@ -36,6 +36,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 import { DropdownModule } from 'primeng/dropdown';
+import {PickListModule} from 'primeng/picklist';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { DropdownModule } from 'primeng/dropdown';
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    DropdownModule
+    DropdownModule,
+    PickListModule
   ],
   providers: [AppMgmtModel],
   bootstrap: [AppComponent]
