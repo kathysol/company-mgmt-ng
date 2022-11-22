@@ -65,7 +65,7 @@
 </div>
 
 <p-table [value]="enterpriseAll" [paginator]="true" [rows]="3" [showCurrentPageReport]="true" [tableStyle]="{'min-width': '50rem'}"
-currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[3,10,50]">
+currentPageReportTemplate="Showing {first} to {last} of {totalRecords} enterprises" [rowsPerPageOptions]="[3,10,50]">
   <ng-template pTemplate="caption">
     <div class="table-header">List of {{ constants.VIEWS.ENTERPRISES }}</div>
   </ng-template>

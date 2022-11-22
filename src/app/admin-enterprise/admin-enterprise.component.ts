@@ -46,7 +46,7 @@ export class AdminEnterpriseComponent implements OnInit {
   getAllEnterprises(){
     this.appMgmtService.getAllEnterprises().subscribe(resp =>{
       this.enterpriseAll=resp;
-      console.warn('ENTERPRISES ALL',this.enterpriseAll);
+
     })
 }
 
@@ -64,10 +64,10 @@ saveEnterprise(){
   this.appMgmtService.saveEnterprise(this.newEnterprise).subscribe(resp =>{
     createdEnterprise=resp;
     if (this.isEdition) {
-      this.messageService.add({severity:'success', summary:messages.THE_COMPANY, detail:messages.SUCCESS.ENTERPRISE_MODIFIED});
+      this.messageService.add({severity:'success', summary:messages.THE_COMPANY, detail:messages.SUCCESS.MODIFIED_CORRECTLY});
 
     }else{
-      this.messageService.add({severity:'success', summary:messages.THE_COMPANY, detail:messages.SUCCESS.ENTERPRISE_CREATED});
+      this.messageService.add({severity:'success', summary:messages.THE_COMPANY, detail:messages.SUCCESS.CREATED_CORRECTLY});
 
     }
    this.clearNew();
@@ -122,7 +122,7 @@ changeStatusEnterprise(newStatus:boolean,enterprise: EnterpriseVO){
   let createdEnterprise= new EnterpriseVO;
   this.appMgmtService.saveEnterprise(enterprise).subscribe(resp =>{
     createdEnterprise=resp;
-   this.messageService.add({severity:'success', summary:messages.THE_COMPANY, detail:messages.SUCCESS.ENTERPRISE_MODIFIED});
+   this.messageService.add({severity:'success', summary:messages.THE_COMPANY, detail:messages.SUCCESS.MODIFIED_CORRECTLY});
    this.clearNew();
   this.getAllEnterprises();
   }, err => {

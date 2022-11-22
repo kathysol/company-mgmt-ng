@@ -30,6 +30,8 @@ import {RippleModule} from 'primeng/ripple';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import {TooltipModule} from 'primeng/tooltip';
 import { DialogModule } from 'primeng/dialog';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { ToolbarModule } from 'primeng/toolbar';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { DialogModule } from 'primeng/dialog';
     RippleModule,
     ConfirmDialogModule,
     TooltipModule,
-    DialogModule
+    DialogModule,
+    SplitButtonModule,
+    ToolbarModule
   ],
   providers: [AppMgmtModel],
   bootstrap: [AppComponent]
