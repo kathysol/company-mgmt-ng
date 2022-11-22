@@ -1,20 +1,33 @@
 <div class="row">
   <div class="col-11"></div>
-  <div class="col-1" style="margin-bottom:10px; ">
-    <button (click)="showModalNew()" pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded p-button-success" pTooltip="New department">
-
-    </button>
-
-
+  <div class="col-1" style="margin-bottom: 10px">
+    <button
+      (click)="showModalNew()"
+      pButton
+      pRipple
+      type="button"
+      icon="pi pi-plus"
+      class="p-button-rounded p-button-success"
+      pTooltip="New department"
+    ></button>
   </div>
-  </div>
+</div>
 
 <p-messages></p-messages>
-<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+></p-confirmDialog>
 
-
-<p-table [value]="departmentAll" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" [tableStyle]="{'min-width': '50rem'}"
-currentPageReportTemplate="Showing {first} to {last} of {totalRecords} departments" [rowsPerPageOptions]="[5,10,50]">
+<p-table
+  [value]="departmentAll"
+  [paginator]="true"
+  [rows]="5"
+  [showCurrentPageReport]="true"
+  [tableStyle]="{ 'min-width': '50rem' }"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} departments"
+  [rowsPerPageOptions]="[5, 10, 50]"
+>
   <ng-template pTemplate="caption">
     <div class="table-header">List of {{ constants.VIEWS.DEPARTMENTS }}</div>
   </ng-template>
@@ -33,7 +46,8 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} departmen
         Phone <p-sortIcon field="phone"></p-sortIcon>
       </th>
       <th pSortableColumn="enterprise.name" style="width: 10%">
-        {{constants.VIEWS.ENTERPRISE}}<p-sortIcon field="enterprise.name"></p-sortIcon>
+        {{ constants.VIEWS.ENTERPRISE
+        }}<p-sortIcon field="enterprise.name"></p-sortIcon>
       </th>
       <th pSortableColumn="status" style="width: 10%">
         Status <p-sortIcon field="status"></p-sortIcon>
@@ -48,70 +62,194 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} departmen
       <td>{{ department.description }}</td>
       <td>{{ department.phone }}</td>
       <td>
-        <button disabled="true" pButton pRipple type="button" label="{{department.enterprise.name}}" class="p-button-text p-button-success p-button-sm" icon="pi pi-building"></button>
-          </td>
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Fallabela"
+          class="p-button-rounded p-button-help p-button-sm"
+          icon="pi pi-building"
+        ></button>
+      </td>
       <td>
         <button *ngIf="department.status" disabled="true" pButton pRipple type="button" label="{{constants.ACTIVE_STATE}}" class="p-button-text p-button-success p-button-sm" icon="pi pi-check"></button>
         <button  *ngIf="!department.status" disabled="true" pButton pRipple type="button" label="{{constants.INACTIVE_STATE}}" class="p-button-text p-button-secondary p-button-sm" icon="pi pi-times"></button>
+
       </td>
       <td>
-        <button pButton pRipple (click)="showModalEdit(department)" type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning p-button-sm" pTooltip="Edit department"></button>
-        <button *ngIf="!department.status"  (click)="changeStatusDepartment(true,department)" pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-success p-button-sm" pTooltip="Activate company "></button>
-        <button *ngIf="department.status" (click)="changeStatusDepartment(false,department)" pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-secondary p-button-sm" pTooltip="Inactivate company "></button>
+        <button
+          pButton
+          pRipple
+          (click)="showModalEdit(department)"
+          type="button"
+          icon="pi pi-pencil"
+          class="p-button-rounded p-button-warning p-button-sm"
+          pTooltip="Edit department"
+        ></button>
+        <button
+          *ngIf="!department.status"
+          (click)="changeStatusDepartment(true, department)"
+          pButton
+          pRipple
+          type="button"
+          icon="pi pi-check"
+          class="p-button-rounded p-button-success p-button-sm"
+          pTooltip="Activate company "
+        ></button>
+        <button
+          *ngIf="department.status"
+          (click)="changeStatusDepartment(false, department)"
+          pButton
+          pRipple
+          type="button"
+          icon="pi pi-times"
+          class="p-button-rounded p-button-secondary p-button-sm"
+          pTooltip="Inactivate company "
+        ></button>
         <!-- <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger" p-button-sm></button> -->
-        <button  (click)="showModalAudit(department)" pButton pRipple type="button" icon="pi pi-comments" class="p-button-rounded p-button-info" p-button-sm pTooltip="View audit fields "></button>
+        <button
+          (click)="showModalAudit(department)"
+          pButton
+          pRipple
+          type="button"
+          icon="pi pi-comments"
+          class="p-button-rounded p-button-info"
+          p-button-sm
+          pTooltip="View audit fields "
+        ></button>
       </td>
     </tr>
   </ng-template>
 </p-table>
 
-<p-dialog header="Audit Fields" [(visible)]="displayModalAudit" [style]="{width: '50vw'}" [baseZIndex]="10000">
+<p-dialog
+  header="Audit Fields"
+  [(visible)]="displayModalAudit"
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+>
   <div class="row">
     <div class="col-2">
-      <p bold >Created by: </p>
+      <p bold>Created by:</p>
     </div>
     <div class="col-10">
-      {{auditDepartment.createdBy}}
+      {{ auditDepartment.createdBy }}
     </div>
   </div>
   <div class="row">
     <div class="col-2">
-      <p bold >Created date: </p>
+      <p bold>Created date:</p>
     </div>
     <div class="col-10">
-      {{auditDepartment.createdDate}}
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-2">
-      <p bold >Modified by: </p>
-    </div>
-    <div class="col-10">
-      {{auditDepartment.modifiedBy}}
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-2">
-      <p bold >Modified date: </p>
-    </div>
-    <div class="col-10">
-      {{auditDepartment.modifiedDate}}
+      {{ auditDepartment.createdDate }}
     </div>
   </div>
 
- </p-dialog>
+  <div class="row">
+    <div class="col-2">
+      <p bold>Modified by:</p>
+    </div>
+    <div class="col-10">
+      {{ auditDepartment.modifiedBy }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <p bold>Modified date:</p>
+    </div>
+    <div class="col-10">
+      {{ auditDepartment.modifiedDate }}
+    </div>
+  </div>
+</p-dialog>
+<p-dialog header="{{ titleNewModal }}" [(visible)]="displayModalNewDepartment" [style]="{ width: '50vw' }"
+  [baseZIndex]="10000">
+  <!-- <div class="row">
+      <p-inputSwitch [(ngModel)]="newDepartment.status">{{constants.ACTIVE_STATE}}</p-inputSwitch>
 
- <p-dialog header="{{titleNewModal}}" [(visible)]="displayModalNewDepartment" [style]="{width: '50vw'}" [baseZIndex]="10000">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div> -->
+  <div class="container">
+    <form [formGroup]="departmentGroupForm" class="form">
+
+      <div class="row">
+        <div class="col-8">
+          <div class="p-field">
+            <span class="p-float-label">
+              <input class="container" id="float-input" type="text" pInputText [(ngModel)]="newDepartment.name"
+                formControlName="name" required />
+              <label for="float-input">Name of department</label>
+            </span>
+          </div>
+        </div>
+        <div class="col-4">
+          <p-message style="margin:  4px;" *ngIf="departmentGroupForm.controls['name'].invalid" severity="error"
+            text="{{getErrorMessage('name')}}"></p-message>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-8" >
+          <div class="p-field" >
+            <span class="p-float-label">
+              <textarea class="container" id="float-input" rows="5" cols="30" pInputTextarea
+                [(ngModel)]="newDepartment.description" formControlName="description"></textarea>
+              <label for="float-input">Description</label>
+            </span>
+          </div>
+        </div>
+        <div class="col-4"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-8">
+          <div class="p-field">
+            <span class="p-float-label">
+              <input class="container" id="float-input" type="text" pInputText [(ngModel)]="newDepartment.phone" formControlName="phone" />
+              <label for="float-input">Phone</label>
+            </span>
+
+          </div>
+        </div>
+        <div class="col-4"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-8" style="padding:  0px;">
+          <div class="p-field container">
+            <p-dropdown [options]="enterpriseAll" [(ngModel)]="newDepartment.enterprise" optionLabel="name"
+              [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a country"
+              formControlName="enterprise" autoWidth="false" [style]="{'width':'100%'}">
+              <ng-template pTemplate="selectedItem">
+                <div class="country-item country-item-value"
+                  *ngIf="newDepartment.enterprise!=null && newDepartment.enterprise.name!=null">
+                  <div>{{newDepartment.enterprise.name}}</div>
+                </div>
+              </ng-template>
+              <ng-template let-country pTemplate="item">
+                <div class="country-item">
+                  <div>{{country.name}}</div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+          </div>
+        </div>
+        <div class="col-4">
+          <p-message style="margin:  4px;" *ngIf="departmentGroupForm.controls['enterprise'].invalid" severity="error"
+          text="{{getErrorMessage('enterprise')}}"></p-message>
+
+        </div>
+
+
+      </div>
+
+    </form>
+  </div>
+
   <ng-template pTemplate="footer">
-      <p-button *ngIf="isNew" icon="pi pi-save" (click)="saveDepartment(false)" label="Save" styleClass="p-button-text"></p-button>
-      <p-button *ngIf="!isNew" icon="pi pi-pencil" (click)="saveDepartment(true)" label="Edit" styleClass="p-button-text"></p-button>
-      <p-button icon="pi pi-times" (click)="displayModalNewDepartment=false" label="Cancel"></p-button>
+    <p-button *ngIf="isNew" icon="pi pi-save" (click)="saveDepartment(false)" label="Save" styleClass="p-button-text">
+    </p-button>
+    <p-button *ngIf="!isNew" icon="pi pi-pencil" (click)="saveDepartment(true)" label="Edit" styleClass="p-button-text">
+    </p-button>
+    <p-button icon="pi pi-times" (click)="displayModalNewDepartment = false" label="Cancel"></p-button>
   </ng-template>
 </p-dialog>
-
-

@@ -19,7 +19,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {PanelModule} from 'primeng/panel';
 import {TableModule} from 'primeng/table';
 import { DividerModule } from "primeng/divider";
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import AppMgmtModel from './model/AppMgmtModel';
@@ -32,6 +32,10 @@ import {TooltipModule} from 'primeng/tooltip';
 import { DialogModule } from 'primeng/dialog';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { ToolbarModule } from 'primeng/toolbar';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -64,7 +68,12 @@ import { ToolbarModule } from 'primeng/toolbar';
     TooltipModule,
     DialogModule,
     SplitButtonModule,
-    ToolbarModule
+    ToolbarModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    DropdownModule
   ],
   providers: [AppMgmtModel],
   bootstrap: [AppComponent]
