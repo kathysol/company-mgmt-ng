@@ -1,6 +1,7 @@
 export const messages = {
   THE_COMPANY:'The company',
   THE_DEPARTMENT:'The department',
+  THE_EMPLOYEE:'The employee',
   SUCCESS_NAME:'Success.',
   ERROR_NAME:'Error.',
   QUESTION:{
@@ -20,5 +21,6 @@ export const messages = {
     ENTERPRISE_NO_MODIFIED:'An error occurred while updating the company.',
     DEPARTMENT_NO_CREATED:'An error occurred while creating the department.',
     DEPARTMENT_NO_MODIFIED:'An error occurred while updating the department.',
+    EMPLOYEE_NO_MODIFIED:'An error occurred while updating the employee.',
   }
 }

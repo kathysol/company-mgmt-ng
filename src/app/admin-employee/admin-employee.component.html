@@ -1,1 +1,142 @@
-<p>admin-employee works!</p>
+<p-messages></p-messages>
+<p-confirmDialog [style]="{ width: '50vw' }" [baseZIndex]="10000"></p-confirmDialog>
+<div class="row">
+  <div class="col-6">
+    <p-card header="List of {{ constants.VIEWS.EMPLOYEES }}">
+
+      <p-table [value]="employeeAll" [paginator]="true" [rows]="3" [showCurrentPageReport]="true"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} employees"
+      [rowsPerPageOptions]="[3, 10, 50]">
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="id" style="width: 10%">
+            Code <p-sortIcon field="id"></p-sortIcon>
+          </th>
+          <th pSortableColumn="name" style="width: 30%">
+            Name <p-sortIcon field="name"></p-sortIcon>
+          </th>
+          <th pSortableColumn="age" style="width: 10%">
+            Age <p-sortIcon field="age"></p-sortIcon>
+          </th>
+          <th pSortableColumn="position" style="width: 10%">
+            Position <p-sortIcon field="position"></p-sortIcon>
+          </th>
+          <th pSortableColumn="status" style="width: 10%">
+            Status <p-sortIcon field="status"></p-sortIcon>
+          </th>
+          <th tyle="width:10%">Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-employee>
+        <tr>
+          <td>{{ employee.id }}</td>
+          <td>
+            <button (click)="chargeEmployee( employee)"  pButton pRipple type="button" label="{{ employee.name }}" class="p-button-danger p-button-text"></button>
+          </td>
+          <td>{{ employee.age }}</td>
+          <td>{{ employee.position }}</td>
+           <td>
+            <button *ngIf="employee.status" disabled="true" pButton pRipple type="button"
+              label="{{constants.ACTIVE_STATE}}" class="p-button-text p-button-success p-button-sm"
+              icon="pi pi-check"></button>
+            <button *ngIf="!employee.status" disabled="true" pButton pRipple type="button"
+              label="{{constants.INACTIVE_STATE}}" class="p-button-text p-button-secondary p-button-sm"
+              icon="pi pi-times"></button>
+
+          </td>
+          <td>
+            <button *ngIf="!employee.status" (click)="changeStatusEmployee(true, employee)" pButton pRipple
+              type="button" icon="pi pi-check" class="p-button-rounded p-button-success p-button-sm"
+              pTooltip="Activate employee "></button>
+            <button *ngIf="employee.status" (click)="changeStatusEmployee(false, employee)" pButton pRipple
+              type="button" icon="pi pi-times" class="p-button-rounded p-button-secondary p-button-sm"
+              pTooltip="Inactivate employee "></button>
+              </td>
+        </tr>
+      </ng-template>
+      </p-table>    </p-card>
+  </div>
+  <div class="col-6">
+
+      <p-panel header="{{showEmployee.name}}"  [toggleable]="true">
+        <ng-template pTemplate="icons">
+          <button pButton class="p-panel-header-icon p-link" icon="pi pi-user-plus"></button>
+          <button pButton class="p-panel-header-icon p-link" icon="pi pi-save"></button>
+          <button pButton class="p-panel-header-icon p-link" icon="pi pi-comments"></button>
+
+      </ng-template>
+        <div class="container">
+          <form [formGroup]="employeeGroupForm" class="form">
+            <div class="row">
+              <div class="col-8">
+                <div class="p-field">
+                  <div class="p-col-12 p-md-4">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                        <input type="text" pInputText placeholder="Username">
+                    </div>
+                </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="p-field">
+                  <div class="p-col-12 p-md-4">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
+                        <input type="text" pInputText placeholder="Age">
+                    </div>
+                </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-8">
+                <div class="p-field">
+                  <div class="p-col-12 p-md-4">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-envelope"></i></span>
+                        <input type="text" pInputText placeholder="Email">
+                    </div>
+                </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="p-field">
+                  <div class="p-col-12 p-md-4">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-sitemap"></i></span>
+                        <input type="text" pInputText placeholder="Position">
+                    </div>
+                </div>
+                </div>
+              </div>
+            </div>
+           </form>
+        </div>
+    </p-panel>
+
+
+
+      <p-panel header="{{ constants.VIEWS.DEPARTMENTS }}"  [toggleable]="true">
+        <p-virtualScroller [value]="departmentAll" scrollHeight="500px" [itemSize]="100">
+         <ng-template let-department pTemplate="item">
+          <div class="product-item">
+            <div class="product-list-detail">
+              <h5 class="mb-2">{{ department.name }}</h5>
+              <i class="pi pi-tag product-category-icon"></i>
+              <span class="product-category">{{ department.phone }}</span>
+            </div>
+            <div class="product-list-action">
+              <h6 class="mb-2">${{ department.phone}}</h6>
+              </div>
+          </div>
+        </ng-template>
+      </p-virtualScroller>
+
+      </p-panel>
+
+  </div>
+</div>
+

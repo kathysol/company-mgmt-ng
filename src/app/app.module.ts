@@ -37,6 +37,10 @@ import { MatInputModule } from '@angular/material/input';
 
 import { DropdownModule } from 'primeng/dropdown';
 import {PickListModule} from 'primeng/picklist';
+import {SplitterModule} from 'primeng/splitter';
+import { CardModule, } from 'primeng/card';
+import { VirtualScrollerModule } from 'primeng/virtualscroller';
+import {ListboxModule} from 'primeng/listbox';
 
 @NgModule({
   declarations: [
@@ -75,7 +79,12 @@ import {PickListModule} from 'primeng/picklist';
     ReactiveFormsModule,
     MatInputModule,
     DropdownModule,
-    PickListModule
+    PickListModule,
+    SplitterModule,
+    CardModule,
+    VirtualScrollerModule,
+    ListboxModule
+
   ],
   providers: [AppMgmtModel],
   bootstrap: [AppComponent]
