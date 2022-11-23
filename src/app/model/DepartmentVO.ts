@@ -13,5 +13,6 @@ export default class DepartmentVO {
       public modifiedBy?: string,
       public modifiedDate?: string,
       public enterprise?:EnterpriseVO,
+      public idEnterprise?: number,
       public departmentEmployees?:DepartmentEmployeeVO[]) { }
 }

@@ -48,7 +48,7 @@
       <td>{{ department.description }}</td>
       <td>{{ department.phone }}</td>
       <td>
-        <button pButton pRipple type="button" label="Fallabela" class="p-button-rounded p-button-help p-button-sm"
+        <button pButton pRipple type="button" label="{{department.enterprise.name}}" class="p-button-rounded p-button-help p-button-sm"
           icon="pi pi-building"></button>
       </td>
       <td>
@@ -125,53 +125,10 @@
     <form [formGroup]="departmentGroupForm" class="form">
 
       <div class="row">
-        <div class="col-8">
-          <div class="p-field">
-            <span class="p-float-label">
-              <input class="container" id="float-input" type="text" pInputText [(ngModel)]="newDepartment.name"
-                formControlName="name" required />
-              <label for="float-input">Name of department</label>
-            </span>
-          </div>
-        </div>
-        <div class="col-4">
-          <p-message style="margin:  4px;" *ngIf="departmentGroupForm.controls['name'].invalid" severity="error"
-            text="{{getErrorMessage('name')}}"></p-message>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-8">
-          <div class="p-field">
-            <span class="p-float-label">
-              <textarea class="container" id="float-input" rows="5" cols="30" pInputTextarea
-                [(ngModel)]="newDepartment.description" formControlName="description"></textarea>
-              <label for="float-input">Description</label>
-            </span>
-          </div>
-        </div>
-        <div class="col-4"></div>
-      </div>
-
-      <div class="row">
-        <div class="col-8">
-          <div class="p-field">
-            <span class="p-float-label">
-              <input class="container" id="float-input" type="text" pInputText [(ngModel)]="newDepartment.phone"
-                formControlName="phone" />
-              <label for="float-input">Phone</label>
-            </span>
-
-          </div>
-        </div>
-        <div class="col-4"></div>
-      </div>
-
-      <div class="row">
         <div class="col-8" style="padding:  0px;">
           <div class="p-field container">
             <p-dropdown [options]="enterpriseAll" [(ngModel)]="newDepartment.enterprise" optionLabel="name"
-              [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a country"
+              [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a company"
               formControlName="enterprise" autoWidth="false" [style]="{'width':'100%'}">
               <ng-template pTemplate="selectedItem">
                 <div class="country-item country-item-value"
@@ -195,14 +152,58 @@
 
 
       </div>
+      <div class="row block">
+        <div class="col-8">
+          <div class="p-field">
+            <span class="p-float-label">
+              <input class="container" id="float-input" type="text" pInputText [(ngModel)]="newDepartment.name"
+                formControlName="name" required />
+              <label for="float-input">Name of department</label>
+            </span>
+          </div>
+        </div>
+        <div class="col-4">
+          <p-message style="margin:  4px;" *ngIf="departmentGroupForm.controls['name'].invalid" severity="error"
+            text="{{getErrorMessage('name')}}"></p-message>
+        </div>
+      </div>
+
+      <div class="row block">
+        <div class="col-8">
+          <div class="p-field">
+            <span class="p-float-label">
+              <textarea class="container" id="float-input" rows="5" cols="30" pInputTextarea
+                [(ngModel)]="newDepartment.description" formControlName="description"></textarea>
+              <label style="margin-top:  10px;" for="float-input">Description</label>
+            </span>
+          </div>
+        </div>
+        <div class="col-4"></div>
+      </div>
+
+      <div class="row block">
+        <div class="col-8">
+          <div class="p-field">
+            <span class="p-float-label">
+              <input class="container" id="float-input" type="text" pInputText [(ngModel)]="newDepartment.phone"
+                formControlName="phone" />
+              <label for="float-input">Phone</label>
+            </span>
+
+          </div>
+        </div>
+        <div class="col-4"></div>
+      </div>
+
+
 
     </form>
   </div>
 
   <ng-template pTemplate="footer">
-    <p-button *ngIf="isNew" icon="pi pi-save" (click)="saveDepartment(false)" label="Save" styleClass="p-button-text">
+    <p-button *ngIf="isNew" icon="pi pi-save" (click)="saveDepartment(true)" label="Save" styleClass="p-button-text">
     </p-button>
-    <p-button *ngIf="!isNew" icon="pi pi-pencil" (click)="saveDepartment(true)" label="Edit" styleClass="p-button-text">
+    <p-button *ngIf="!isNew" icon="pi pi-pencil" (click)="saveDepartment(false)" label="Edit" styleClass="p-button-text">
     </p-button>
     <p-button icon="pi pi-times" (click)="displayModalNewDepartment = false" label="Cancel"></p-button>
   </ng-template>

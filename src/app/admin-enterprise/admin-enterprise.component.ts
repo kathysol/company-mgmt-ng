@@ -132,6 +132,14 @@ changeStatusEnterprise(newStatus:boolean,enterprise: EnterpriseVO){
 }
 
 showModalAudit(enterprise: EnterpriseVO){
+  if (enterprise!=null && enterprise.createdDate!=null ) {
+    enterprise.createdDate=enterprise.createdDate.substring(0,10);
+  }
+
+  if (enterprise!=null && enterprise.modifiedDate!=null ) {
+    enterprise.modifiedDate=enterprise.modifiedDate.substring(0,10);
+  }
+
   this.displayModalAudit=true;
   this.auditEnterprise=enterprise;
 }

@@ -102,6 +102,14 @@ changeStatusDepartment(newStatus:boolean,departmentVO: DepartmentVO){
 }
 
 showModalAudit(departmentVO: DepartmentVO){
+  if (departmentVO!=null && departmentVO.createdDate!=null ) {
+    departmentVO.createdDate=departmentVO.createdDate.substring(0,10);
+  }
+
+  if (departmentVO!=null && departmentVO.modifiedDate!=null ) {
+    departmentVO.modifiedDate=departmentVO.modifiedDate.substring(0,10);
+  }
+
   this.displayModalAudit=true;
   this.auditDepartment=departmentVO;
 }
@@ -125,6 +133,7 @@ if (this.departmentGroupForm.controls.name.hasError('required')) {
   this.newDepartment.phone=this.departmentGroupForm.controls.phone.value+'';
   this.newDepartment.status=true;
   this.newDepartment.createdBy='usadmd';
+  this.newDepartment.idEnterprise=this.newDepartment.enterprise?.id;
 
   let createDepartment= new DepartmentVO;
   this.appMgmtService.saveDepartment(this.newDepartment).subscribe(resp =>{
@@ -136,6 +145,7 @@ if (this.departmentGroupForm.controls.name.hasError('required')) {
         }
    this.clearNew();
   this.getAllDepartments();
+  this.displayModalNewDepartment=false;
   }, err => {
     if (isNew) {
       this.messageService.add({severity:'error', summary:messages.ERROR_NAME, detail:messages.ERROR.DEPARTMENT_NO_CREATED});
@@ -155,7 +165,7 @@ getErrorMessage(con:string) {
   if (con=='name') {
     error=this.departmentGroupForm.controls.name.hasError('required') ? 'Name is required' : '';
   } if (con=='enterprise') {
-    error=this.departmentGroupForm.controls.enterprise.hasError('required') ? 'Enterprise is required' : '';
+    error=this.departmentGroupForm.controls.enterprise.hasError('required') ? 'Company is required' : '';
 
   }
 
